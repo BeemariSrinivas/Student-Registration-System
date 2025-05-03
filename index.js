@@ -21,18 +21,41 @@ window.addEventListener("load",()=>{
 
 //gets new record data
 function addEntry() {
-    const studentName = document.getElementById("name").value;
-    const studentID = document.getElementById("ID").value;
-    const studentGrade = document.getElementById("Grade").value;
-    const studentEmail = document.getElementById("email").value;
-    const studentContactNo = document.getElementById("Contact.No").value;
+    const studentName = document.getElementById("name").value.trim();
+    const studentID = document.getElementById("ID").value.trim();
+    const studentGrade = document.getElementById("Grade").value.trim();
+    const studentEmail = document.getElementById("email").value.trim();
+    const studentContactNo = document.getElementById("Contact.No").value.trim();
 
-    if ((studentName !== "") && (studentID > 0) && (studentGrade > 0) && (studentEmail !== "") && (studentContactNo > 0)) {
-        newRecord(studentName,studentID,studentGrade,studentEmail,studentContactNo);
-        addRecord(studentName,studentID,studentGrade,studentEmail,studentContactNo);
-    } else {
-        alert("Enter all details before submitting");
+    const namePattern = /^[A-Za-z\s]+$/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!namePattern.test(studentName)) {
+        alert("Name must contain only letters.");
+        return;
     }
+
+    if (isNaN(studentID) || studentID <= 0) {
+        alert("Student ID must be a positive number.");
+        return;
+    }
+
+    if (isNaN(studentGrade) || studentGrade <= 0) {
+        alert("Grade must be a positive number.");
+        return;
+    }
+
+    if (!emailPattern.test(studentEmail)) {
+        alert("Invalid email address.");
+        return;
+    }
+
+    if (!/^\d{10}$/.test(studentContactNo)) {
+        alert("Contact number must be 10 digits.");
+        return;
+    }
+    newRecord(studentName, studentID, studentGrade, studentEmail, studentContactNo);
+    addRecord(studentName, studentID, studentGrade, studentEmail, studentContactNo);
 }
 
 //display all the records
@@ -66,6 +89,7 @@ function newRecord(studentName,studentID,studentGrade,studentEmail,studentContac
         deleteElement.classList.add("delete_element");
 
         document.getElementById("record").appendChild(new_record);
+        document.getElementById("form").reset();
 
         //allows the displayed records to update
         edit.addEventListener("click",function(event){
