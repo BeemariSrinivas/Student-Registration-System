@@ -1,0 +1,99 @@
+/*styling for body*/
+body{
+    background-color: rgba(0, 0, 255, 0.219);
+}
+
+/*styling for container containg the form and data display section*/
+#data{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+/*styling for form*/
+form{
+    display: inline-flex;
+    flex-direction: column;
+    padding: 3;
+    width: 30rem;
+    margin: 10rem;
+    border: 0.25rem solid black;
+    padding: 3rem;
+    background-color: antiquewhite;
+}
+
+/*styling for all button*/
+button{
+    margin: auto;
+}
+
+/*styling for data input section inside form*/
+#data_input{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(5,1fr);
+    width: 30rem;
+    margin-bottom: 1rem;
+}
+
+/*styling for children inside data input section*/
+#data_input > *{
+    border: 1px solid black;
+    padding: 3%;
+}
+
+/*styling for all input elements*/
+input{
+    margin-bottom: 1 rem;
+}
+
+/*styling for data display section*/
+#data_display{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    width: 100%;
+    margin-left: 2rem;
+    margin-bottom: 10rem;
+    border: 0.25rem solid black;
+    background-color: azure;
+}
+
+/*styling for headings in data display section*/
+#headings{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    grid-template-rows: 1fr;
+    border: 1px solid black;
+}
+
+/*styling for children inside headings*/
+#headings >*{
+    width: min-content;
+    padding-inline: 2rem;
+}
+
+/*stylings for new records*/
+.new_record_style{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    grid-template-rows: 1fr;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid black;
+    width: 100%;
+}
+
+/*styling for children inside new records*/
+.new_record_style > *{
+    border: 1px solid black;
+    width: 13rem;
+}
+
+/*styling for record-container*/
+#record-container{
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 1px solid #aaa;
+}
